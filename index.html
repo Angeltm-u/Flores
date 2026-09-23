@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🌻 Para ti 🌻</title>
+    <title>Happy Student's Day 🌸</title>
 
     <style>
 
@@ -20,102 +21,222 @@
         }
 
         body {
+
             min-height: 100vh;
+
             overflow: hidden;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            place-items: center;
 
             font-family: "Segoe UI", Arial, sans-serif;
 
             background:
+
                 radial-gradient(
-                    circle at 50% 20%,
-                    rgba(255, 255, 180, 0.7),
-                    transparent 30%
+                    circle at 50% 30%,
+                    rgba(255,255,255,.95),
+                    transparent 25%
                 ),
+
                 linear-gradient(
-                    180deg,
-                    #fffde7 0%,
-                    #fff8c5 35%,
-                    #ffe082 70%,
-                    #ffca28 100%
+                    160deg,
+                    #dff5df 0%,
+                    #b8e6bd 35%,
+                    #f8d6e4 70%,
+                    #fff0b3 100%
                 );
+
+            color: #263238;
 
             position: relative;
         }
 
 
         /* =========================================================
-           LUZ DEL FONDO
+           SOL
         ========================================================= */
 
-        .luz {
+        .sun {
+
             position: absolute;
 
-            width: 450px;
-            height: 450px;
+            width: 150px;
+            height: 150px;
 
             border-radius: 50%;
 
-            background: rgba(255, 235, 59, 0.35);
+            top: 30px;
+            right: 50px;
 
-            filter: blur(60px);
+            background: #ffe082;
 
-            animation: respirar 5s ease-in-out infinite;
+            box-shadow:
+
+                0 0 30px #ffe082,
+                0 0 80px rgba(255,224,130,.7);
+
+            animation: sunPulse 4s ease-in-out infinite;
 
             z-index: 0;
         }
 
-        @keyframes respirar {
+
+        @keyframes sunPulse {
 
             0%, 100% {
+
                 transform: scale(1);
-                opacity: 0.5;
+
             }
 
             50% {
-                transform: scale(1.2);
-                opacity: 0.8;
+
+                transform: scale(1.08);
+
             }
+
         }
 
 
         /* =========================================================
-           ESTRELLAS / PARTICULAS
+           NUBES
         ========================================================= */
 
-        .particula {
+        .cloud {
+
             position: absolute;
 
-            width: 5px;
-            height: 5px;
+            width: 150px;
+            height: 45px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.65);
+
+            z-index: 0;
+
+            animation: moveCloud linear infinite;
+        }
+
+
+        .cloud::before,
+        .cloud::after {
+
+            content: "";
+
+            position: absolute;
+
+            background: inherit;
+
+            border-radius: 50%;
+        }
+
+
+        .cloud::before {
+
+            width: 65px;
+            height: 65px;
+
+            left: 25px;
+            bottom: 5px;
+        }
+
+
+        .cloud::after {
+
+            width: 80px;
+            height: 80px;
+
+            right: 20px;
+            bottom: 2px;
+        }
+
+
+        .cloud.one {
+
+            top: 15%;
+
+            left: -200px;
+
+            animation-duration: 32s;
+        }
+
+
+        .cloud.two {
+
+            top: 58%;
+
+            left: -250px;
+
+            transform: scale(.75);
+
+            animation-duration: 42s;
+
+            animation-delay: 8s;
+        }
+
+
+        @keyframes moveCloud {
+
+            from {
+
+                left: -250px;
+
+            }
+
+            to {
+
+                left: 110%;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           BRILLOS
+        ========================================================= */
+
+        .sparkle {
+
+            position: absolute;
+
+            width: 6px;
+            height: 6px;
 
             border-radius: 50%;
 
             background: white;
 
             box-shadow:
-                0 0 8px white,
-                0 0 15px #fff59d;
+                0 0 10px white,
+                0 0 18px #fff;
 
-            animation: parpadear 3s infinite ease-in-out;
+            animation: sparkleAnimation 2.5s ease-in-out infinite;
 
-            z-index: 1;
+            z-index: 2;
         }
 
-        @keyframes parpadear {
+
+        @keyframes sparkleAnimation {
 
             0%, 100% {
-                opacity: 0.2;
-                transform: scale(0.7);
+
+                opacity: .2;
+
+                transform: scale(.6);
+
             }
 
             50% {
+
                 opacity: 1;
-                transform: scale(1.3);
+
+                transform: scale(1.5);
+
             }
+
         }
 
 
@@ -123,246 +244,223 @@
            TARJETA CENTRAL
         ========================================================= */
 
-        .contenedor {
+        .card {
 
             position: relative;
 
-            width: min(90%, 650px);
+            z-index: 10;
 
-            padding: 55px 40px;
+            width: min(90%, 760px);
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            margin: 20px;
+
+            padding: 45px 50px;
 
             text-align: center;
 
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255,255,255,.78);
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(18px);
 
-            border: 2px solid rgba(255, 255, 255, 0.65);
+            -webkit-backdrop-filter: blur(18px);
 
-            border-radius: 30px;
+            border:
+
+                2px solid
+                rgba(255,255,255,.9);
+
+            border-radius: 40px;
 
             box-shadow:
-                0 20px 50px rgba(121, 85, 72, 0.2),
-                inset 0 0 30px rgba(255, 255, 255, 0.4);
 
-            z-index: 10;
+                0 25px 70px
+                rgba(67,90,60,.25),
 
-            animation: aparecer 1.5s ease;
+                inset 0 0 35px
+                rgba(255,255,255,.7);
+
+            animation: cardAppear 1.2s ease-out;
         }
 
-        @keyframes aparecer {
+
+        @keyframes cardAppear {
 
             from {
+
                 opacity: 0;
-                transform: translateY(40px) scale(0.9);
+
+                transform:
+                    translateY(50px)
+                    scale(.9);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0) scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
             }
+
         }
 
 
         /* =========================================================
-           TITULO
+           TEXTO DE PRIMAVERA
         ========================================================= */
 
-        .titulo {
+        .season {
 
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: 1rem;
 
-            color: #f57f17;
+            letter-spacing: 4px;
 
-            text-shadow:
-                2px 2px 0 white,
-                0 0 15px rgba(255, 193, 7, 0.5);
+            font-weight: bold;
 
-            margin-bottom: 20px;
+            color: #2e7d32;
 
-            animation: latir 3s ease-in-out infinite;
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
         }
 
-        @keyframes latir {
+
+        /* =========================================================
+           FLORES SUPERIORES
+        ========================================================= */
+
+        .flowers {
+
+            font-size: 3rem;
+
+            letter-spacing: 8px;
+
+            animation: flowersFloat 3s ease-in-out infinite;
+        }
+
+
+        @keyframes flowersFloat {
 
             0%, 100% {
-                transform: scale(1);
+
+                transform:
+                    translateY(0);
+
             }
 
             50% {
-                transform: scale(1.05);
+
+                transform:
+                    translateY(-8px);
+
             }
+
         }
 
 
         /* =========================================================
-           SUBTITULO
+           TÍTULO
         ========================================================= */
 
-        .mensaje {
+        h1 {
 
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-top: 10px;
 
-            color: #6d4c41;
+            font-size:
+                clamp(
+                    2.3rem,
+                    7vw,
+                    4.5rem
+                );
+
+            line-height: 1.05;
+
+            color: #2e7d32;
+
+            text-shadow:
+
+                2px 3px 0 white;
+
+        }
+
+
+        h1 span {
+
+            color: #ec407a;
+
+        }
+
+
+        /* =========================================================
+           SUBTÍTULO
+        ========================================================= */
+
+        .subtitle {
+
+            margin-top: 20px;
+
+            font-size:
+                clamp(
+                    1rem,
+                    2.5vw,
+                    1.3rem
+                );
 
             line-height: 1.7;
 
-            margin-bottom: 30px;
+            color: #455a64;
+
         }
 
 
         /* =========================================================
-           FLOR CENTRAL
+           MENSAJE
         ========================================================= */
 
-        .flor-central {
+        .message {
 
-            font-size: 6rem;
+            margin: 28px auto;
 
-            display: inline-block;
+            max-width: 620px;
 
-            filter:
-                drop-shadow(0 10px 10px rgba(121, 85, 72, 0.25));
+            padding: 22px 25px;
 
-            animation:
+            border-left:
 
-                girar-suave 8s linear infinite,
-                flotar 3s ease-in-out infinite;
+                5px solid
+                #ec407a;
 
-        }
+            border-radius: 15px;
 
-        @keyframes girar-suave {
+            background:
 
-            from {
-                transform: rotate(-5deg);
-            }
-
-            50% {
-                transform: rotate(5deg);
-            }
-
-            to {
-                transform: rotate(-5deg);
-            }
-        }
-
-        @keyframes flotar {
-
-            0%, 100% {
-                translate: 0 0;
-            }
-
-            50% {
-                translate: 0 -12px;
-            }
-        }
-
-
-        /* =========================================================
-           CORAZONES
-        ========================================================= */
-
-        .corazon {
-
-            position: absolute;
-
-            font-size: 1.5rem;
-
-            animation: subirCorazon linear forwards;
-
-            z-index: 4;
-
-            pointer-events: none;
-        }
-
-        @keyframes subirCorazon {
-
-            0% {
-                transform:
-                    translateY(0)
-                    scale(0.5)
-                    rotate(0deg);
-
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            100% {
-                transform:
-                    translateY(-100vh)
-                    scale(1.2)
-                    rotate(30deg);
-
-                opacity: 0;
-            }
-        }
-
-
-        /* =========================================================
-           FLORES QUE CAEN
-        ========================================================= */
-
-        .flor {
-
-            position: absolute;
-
-            top: -100px;
-
-            z-index: 5;
-
-            pointer-events: none;
-
-            user-select: none;
-
-            animation-name: caer;
-
-            animation-timing-function: linear;
-
-            animation-fill-mode: forwards;
-
-            filter:
-                drop-shadow(
-                    0 5px 5px rgba(121, 85, 72, 0.2)
+                rgba(
+                    255,
+                    245,
+                    250,
+                    .85
                 );
+
+            color: #37474f;
+
+            font-size: 1.05rem;
+
+            line-height: 1.8;
+
         }
 
-        @keyframes caer {
 
-            0% {
+        .message strong {
 
-                transform:
-                    translateY(-100px)
-                    translateX(0)
-                    rotate(0deg);
+            color: #7e57c2;
 
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            50% {
-
-                transform:
-                    translateY(50vh)
-                    translateX(40px)
-                    rotate(180deg);
-            }
-
-            100% {
-
-                transform:
-                    translateY(115vh)
-                    translateX(-60px)
-                    rotate(360deg);
-
-                opacity: 0;
-            }
         }
 
 
@@ -370,63 +468,282 @@
            BOTÓN
         ========================================================= */
 
-        .boton {
+        .button {
 
             border: none;
 
-            padding: 14px 28px;
+            padding: 15px 30px;
 
             border-radius: 50px;
 
-            background: linear-gradient(
-                135deg,
-                #ffd54f,
-                #ffb300
-            );
+            cursor: pointer;
 
-            color: #5d4037;
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #66bb6a,
+                    #2e7d32
+                );
+
+            color: white;
 
             font-size: 1rem;
 
             font-weight: bold;
 
-            cursor: pointer;
-
             box-shadow:
-                0 8px 20px rgba(245, 124, 0, 0.3);
 
-            transition: all 0.3s ease;
+                0 10px 25px
+                rgba(46,125,50,.3);
+
+            transition:
+                .3s ease;
         }
 
-        .boton:hover {
+
+        .button:hover {
 
             transform:
                 translateY(-4px)
                 scale(1.05);
 
             box-shadow:
-                0 12px 30px rgba(245, 124, 0, 0.4);
+
+                0 15px 30px
+                rgba(46,125,50,.4);
+
         }
 
-        .boton:active {
 
-            transform: scale(0.95);
+        .button:active {
+
+            transform:
+                scale(.95);
+
         }
 
 
         /* =========================================================
-           TEXTO INFERIOR
+           FIRMA
         ========================================================= */
 
-        .firma {
+        .signature {
 
             margin-top: 25px;
 
-            color: #8d6e63;
+            color: #78909c;
 
-            font-size: 0.9rem;
+            font-size: .95rem;
 
             font-style: italic;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================================================
+           FLORES QUE CAEN
+        ========================================================= */
+
+        .petal {
+
+            position: fixed;
+
+            top: -70px;
+
+            z-index: 5;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            animation:
+                fall linear forwards;
+
+        }
+
+
+        @keyframes fall {
+
+            0% {
+
+                transform:
+
+                    translateY(-70px)
+                    translateX(0)
+                    rotate(0deg);
+
+                opacity: 0;
+
+            }
+
+
+            10% {
+
+                opacity: 1;
+
+            }
+
+
+            50% {
+
+                transform:
+
+                    translateY(50vh)
+                    translateX(80px)
+                    rotate(180deg);
+
+            }
+
+
+            100% {
+
+                transform:
+
+                    translateY(115vh)
+                    translateX(-70px)
+                    rotate(360deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           MARIPOSAS
+        ========================================================= */
+
+        .butterfly {
+
+            position: fixed;
+
+            z-index: 6;
+
+            font-size: 2rem;
+
+            pointer-events: none;
+
+            animation:
+                butterflyMove
+                10s linear forwards;
+
+        }
+
+
+        @keyframes butterflyMove {
+
+            0% {
+
+                transform:
+
+                    translate(
+                        -10vw,
+                        80vh
+                    )
+                    rotate(-10deg);
+
+                opacity: 0;
+
+            }
+
+
+            10% {
+
+                opacity: 1;
+
+            }
+
+
+            50% {
+
+                transform:
+
+                    translate(
+                        50vw,
+                        30vh
+                    )
+                    rotate(12deg);
+
+            }
+
+
+            100% {
+
+                transform:
+
+                    translate(
+                        110vw,
+                        65vh
+                    )
+                    rotate(-8deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           FLORES DECORATIVAS LATERALES
+        ========================================================= */
+
+        .side-flower {
+
+            position: absolute;
+
+            font-size: 3rem;
+
+            z-index: 4;
+
+            animation:
+                sideFloat
+                4s ease-in-out infinite;
+        }
+
+
+        .side-flower.left {
+
+            left: 4%;
+
+            bottom: 12%;
+
+        }
+
+
+        .side-flower.right {
+
+            right: 4%;
+
+            bottom: 15%;
+
+            animation-delay: 1.5s;
+
+        }
+
+
+        @keyframes sideFloat {
+
+            0%, 100% {
+
+                transform:
+                    translateY(0)
+                    rotate(-5deg);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-15px)
+                    rotate(5deg);
+
+            }
+
         }
 
 
@@ -434,19 +751,65 @@
            RESPONSIVE
         ========================================================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            .contenedor {
-                padding: 40px 25px;
+            body {
+
+                overflow-y: auto;
+
+                padding: 15px 0;
+
             }
 
-            .flor-central {
-                font-size: 4.5rem;
+
+            .sun {
+
+                width: 90px;
+
+                height: 90px;
+
+                top: 15px;
+
+                right: 15px;
+
             }
 
-            .mensaje {
-                font-size: 1rem;
+
+            .card {
+
+                width: 92%;
+
+                max-height: none;
+
+                padding: 30px 20px;
+
+                margin: 15px;
+
             }
+
+
+            .flowers {
+
+                font-size: 2.2rem;
+
+            }
+
+
+            .message {
+
+                font-size: .95rem;
+
+                padding: 18px;
+
+            }
+
+
+            .side-flower {
+
+                display: none;
+
+            }
+
         }
 
     </style>
@@ -458,53 +821,199 @@
 
 
     <!-- =========================================================
-         LUZ CENTRAL
+         SOL
     ========================================================== -->
 
-    <div class="luz"></div>
+    <div class="sun"></div>
 
 
     <!-- =========================================================
-         PARTICULAS
+         NUBES
     ========================================================== -->
 
-    <div class="particula" style="left: 10%; top: 20%;"></div>
-    <div class="particula" style="left: 20%; top: 70%; animation-delay: .5s;"></div>
-    <div class="particula" style="left: 35%; top: 15%; animation-delay: 1s;"></div>
-    <div class="particula" style="left: 50%; top: 80%; animation-delay: 1.5s;"></div>
-    <div class="particula" style="left: 65%; top: 25%; animation-delay: 2s;"></div>
-    <div class="particula" style="left: 80%; top: 60%; animation-delay: .8s;"></div>
-    <div class="particula" style="left: 90%; top: 15%; animation-delay: 1.8s;"></div>
+    <div class="cloud one"></div>
+
+    <div class="cloud two"></div>
 
 
     <!-- =========================================================
-         CONTENIDO PRINCIPAL
+         BRILLOS
     ========================================================== -->
 
-    <main class="contenedor">
+    <div
+        class="sparkle"
+        style="left:8%; top:18%;">
+    </div>
 
-        <div class="flor-central">
-            🌻
+    <div
+        class="sparkle"
+        style="left:18%; top:72%; animation-delay:.5s;">
+    </div>
+
+    <div
+        class="sparkle"
+        style="left:32%; top:12%; animation-delay:1s;">
+    </div>
+
+    <div
+        class="sparkle"
+        style="left:67%; top:25%; animation-delay:1.5s;">
+    </div>
+
+    <div
+        class="sparkle"
+        style="left:83%; top:68%; animation-delay:.7s;">
+    </div>
+
+    <div
+        class="sparkle"
+        style="left:92%; top:42%; animation-delay:1.8s;">
+    </div>
+
+
+    <!-- =========================================================
+         FLORES LATERALES
+    ========================================================== -->
+
+    <div class="side-flower left">
+        🌻
+    </div>
+
+    <div class="side-flower right">
+        🌷
+    </div>
+
+
+    <!-- =========================================================
+         TARJETA PRINCIPAL
+    ========================================================== -->
+
+    <main class="card">
+
+
+        <div class="season">
+
+            🌱 Spring is here 🌱
+
         </div>
 
-        <h1 class="titulo">
-            Feliz Día de las<br>
-            Flores Amarillas 🌻
+
+        <div class="flowers">
+
+            🌷 🌼 🌸
+
+        </div>
+
+
+        <h1>
+
+            Happy
+            <span>
+                Student's Day!
+            </span>
+
         </h1>
 
-        <p class="mensaje">
-            Que nunca falten motivos para sonreír,
-            momentos bonitos y alguien que haga
-            florecer tus días. 💛
+
+        <p class="subtitle">
+
+            To all my wonderful students:
+
+            may this new season bring you
+
+            <strong>
+                new dreams, new goals,
+                and new opportunities.
+            </strong>
+
         </p>
 
-        <button class="boton" onclick="crearCorazones()">
-            🌻 Un pequeño detalle 🌻
+
+        <!-- =====================================================
+             MENSAJE
+        ====================================================== -->
+
+        <div class="message">
+
+            🌸
+
+            <strong>
+                Dear students,
+            </strong>
+
+            <br><br>
+
+
+            Just like flowers bloom in spring,
+
+            <strong>
+                you are growing every day.
+            </strong>
+
+            Keep learning,
+
+            keep practicing,
+
+            keep asking questions,
+
+            and never be afraid
+
+            of making mistakes.
+
+
+            <br><br>
+
+
+            Every new word you learn,
+
+            every sentence you speak,
+
+            and every challenge you overcome
+
+            is another step forward.
+
+
+            <br><br>
+
+
+            <strong>
+                Believe in yourself
+                and keep shining! ✨
+            </strong>
+
+        </div>
+
+
+        <!-- =====================================================
+             BOTÓN
+        ====================================================== -->
+
+        <button
+            class="button"
+            onclick="celebrate()">
+
+            🌷 Celebrate Student's Day! 🌷
+
         </button>
 
-        <p class="firma">
-            Hecho con cariño ✨
+
+        <!-- =====================================================
+             FIRMA
+        ====================================================== -->
+
+        <p class="signature">
+
+            With appreciation
+            from your English teacher 💚
+
+            <br>
+
+            Keep learning.
+            Keep growing.
+            Keep blooming. 🌱
+
         </p>
+
 
     </main>
 
@@ -515,171 +1024,351 @@
 
     <script>
 
-        /*
-         * ========================================================
-         * CREAR UNA FLOR
-         * ========================================================
-         */
 
-        function crearFlor() {
+        /* =========================================================
+           FLORES DE PRIMAVERA
+        ========================================================== */
 
-            const flor = document.createElement("div");
+        const springFlowers = [
 
-            flor.classList.add("flor");
+            "🌸",
+            "🌷",
+            "🌼",
+            "🌺",
+            "🍃",
+            "🌻"
 
-            flor.textContent = "🌻";
-
-
-            // Posición horizontal aleatoria
-
-            flor.style.left =
-                Math.random() * 100 + "vw";
+        ];
 
 
-            // Tamaño aleatorio
-
-            const tamaño =
-                1.2 + Math.random() * 2.2;
-
-            flor.style.fontSize =
-                tamaño + "rem";
+        function createPetal() {
 
 
-            // Duración aleatoria
-
-            const duracion =
-                5 + Math.random() * 6;
-
-            flor.style.animationDuration =
-                duracion + "s";
+            const petal =
+                document.createElement("div");
 
 
-            // Retraso aleatorio
-
-            flor.style.animationDelay =
-                Math.random() * 1.5 + "s";
+            petal.classList.add("petal");
 
 
-            document.body.appendChild(flor);
+            petal.textContent =
+
+                springFlowers[
+                    Math.floor(
+                        Math.random()
+                        *
+                        springFlowers.length
+                    )
+                ];
 
 
-            // Eliminar después de terminar
+            /* Posición horizontal */
 
-            setTimeout(() => {
+            petal.style.left =
 
-                flor.remove();
-
-            }, (duracion + 2) * 1000);
-
-        }
-
-
-        /*
-         * ========================================================
-         * LLUVIA CONTINUA DE FLORES
-         * ========================================================
-         */
-
-        setInterval(crearFlor, 350);
+                Math.random()
+                *
+                100
+                +
+                "vw";
 
 
-        /*
-         * Crear algunas flores inmediatamente
-         */
+            /* Tamaño */
 
-        for (let i = 0; i < 15; i++) {
+            petal.style.fontSize =
+
+                (
+                    1
+                    +
+                    Math.random() * 1.5
+                )
+                +
+                "rem";
+
+
+            /* Velocidad */
+
+            const duration =
+
+                5
+                +
+                Math.random() * 7;
+
+
+            petal.style.animationDuration =
+
+                duration
+                +
+                "s";
+
+
+            /* Retraso */
+
+            petal.style.animationDelay =
+
+                Math.random()
+                *
+                2
+                +
+                "s";
+
+
+            document.body.appendChild(
+                petal
+            );
+
+
+            /* Eliminar */
 
             setTimeout(
-                crearFlor,
-                i * 250
+                () => {
+
+                    petal.remove();
+
+                },
+
+                (duration + 3) * 1000
             );
 
         }
 
 
-        /*
-         * ========================================================
-         * CORAZONES
-         * ========================================================
-         */
+        /* Lluvia continua */
 
-        function crearCorazon() {
-
-            const corazon =
-                document.createElement("div");
-
-            corazon.classList.add("corazon");
-
-            corazon.textContent =
-                Math.random() > 0.5
-                    ? "💛"
-                    : "✨";
+        setInterval(
+            createPetal,
+            450
+        );
 
 
-            corazon.style.left =
-                Math.random() * 100 + "vw";
+        /* Flores iniciales */
 
+        for (
+            let i = 0;
+            i < 18;
+            i++
+        ) {
 
-            corazon.style.top =
-                "100vh";
-
-
-            const tamaño =
-                1 + Math.random() * 1.5;
-
-            corazon.style.fontSize =
-                tamaño + "rem";
-
-
-            const duracion =
-                3 + Math.random() * 3;
-
-            corazon.style.animationDuration =
-                duracion + "s";
-
-
-            document.body.appendChild(corazon);
-
-
-            setTimeout(() => {
-
-                corazon.remove();
-
-            }, duracion * 1000);
+            setTimeout(
+                createPetal,
+                i * 180
+            );
 
         }
 
 
-        /*
-         * Al presionar el botón,
-         * aparecen muchos corazones
-         */
+        /* =========================================================
+           MARIPOSAS
+        ========================================================== */
 
-        function lanzarCorazones() {
+        function createButterfly() {
 
-            for (let i = 0; i < 20; i++) {
+
+            const butterfly =
+                document.createElement("div");
+
+
+            butterfly.classList.add(
+                "butterfly"
+            );
+
+
+            butterfly.textContent =
+                "🦋";
+
+
+            butterfly.style.top =
+
+                (
+                    20
+                    +
+                    Math.random() * 60
+                )
+                +
+                "vh";
+
+
+            butterfly.style.animationDuration =
+
+                (
+                    8
+                    +
+                    Math.random() * 6
+                )
+                +
+                "s";
+
+
+            document.body.appendChild(
+                butterfly
+            );
+
+
+            setTimeout(
+                () => {
+
+                    butterfly.remove();
+
+                },
+
+                15000
+            );
+
+        }
+
+
+        /* Una mariposa cada cierto tiempo */
+
+        setInterval(
+            createButterfly,
+            7000
+        );
+
+
+        /* =========================================================
+           CELEBRACIÓN DEL BOTÓN
+        ========================================================== */
+
+        function celebrate() {
+
+
+            const celebration = [
+
+                "🌸",
+                "🌷",
+                "🌼",
+                "💚",
+                "✨",
+                "🦋",
+                "🎉"
+
+            ];
+
+
+            for (
+                let i = 0;
+                i < 35;
+                i++
+            ) {
+
 
                 setTimeout(
-                    crearCorazon,
-                    i * 100
+                    () => {
+
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.classList.add(
+                            "petal"
+                        );
+
+
+                        item.textContent =
+
+                            celebration[
+                                Math.floor(
+                                    Math.random()
+                                    *
+                                    celebration.length
+                                )
+                            ];
+
+
+                        item.style.left =
+
+                            Math.random()
+                            *
+                            100
+                            +
+                            "vw";
+
+
+                        item.style.fontSize =
+
+                            (
+                                1
+                                +
+                                Math.random() * 2
+                            )
+                            +
+                            "rem";
+
+
+                        const duration =
+
+                            2
+                            +
+                            Math.random() * 3;
+
+
+                        item.style.animationDuration =
+
+                            duration
+                            +
+                            "s";
+
+
+                        document.body.appendChild(
+                            item
+                        );
+
+
+                        setTimeout(
+                            () => {
+
+                                item.remove();
+
+                            },
+
+                            (duration + 1)
+                            *
+                            1000
+
+                        );
+
+
+                    },
+
+                    i * 70
+
                 );
 
             }
 
-        }
+
+            /* Cambiar temporalmente el botón */
+
+            const button =
+                document.querySelector(
+                    ".button"
+                );
 
 
-        /*
-         * Conectar el botón
-         */
+            button.textContent =
 
-        function crearCorazones() {
+                "🎉 Happy Student's Day! 🎉";
 
-            lanzarCorazones();
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+
+                        "🌷 Celebrate Student's Day! 🌷";
+
+                },
+
+                2500
+            );
 
         }
 
     </script>
+
 
 </body>
 
